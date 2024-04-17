@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py=4">
+    <h1 class="display-3 text-danger text-center">
+        <!-- display-3 is to make the font bigger -->
+        Flask Forms
+    </h1>
+    <form class="form-group" action="/" method="post">
+        <div class="form-group">
+
+            {{ form.csrf_token }}
+
+            <!-- String Field FirstName -->
+            <div class="form-group">
+                {{ form.FirstName.label(class="form-control-label",for="username")}}
+                {{ form.FirstName(placeholder="Enter FirstName",class="form-control",id="username")}}
+            </div>
+            <br>
+            <!-- String Field LastName -->
+            <div class="form-group">
+                {{ form.LastName.label(class="form-control-label",for="username")}}
+                {{ form.LastName(placeholder="Enter FirstName",class="form-control",id="username")}}
+            </div>
+<br>
+
+            <!-- Select Field -->
+            <div class="form-group">
+                {{ form.rating.label(class="form-control-label",for="username")}}
+                {{ form.rating(placeholder="Enter FirstName",class="form-control",id="username")}}
+            </div>
+            <br>
+            <!-- Radio Field -->
+            <div class="form-group">
+            <div class="radio">
+
+                    {{ form.choice.label(class="form-control-label",for="username")}}
+                    {{ form.choice(placeholder="Enter FirstName",class="form-control",id="username")}}
+                </div>
+            </div>
+            <br>
+            <!-- Date Field -->
+            <div class="form-group py=2">
+                {{form.birthday.label(class="form-control-label")}}
+                {{form.birthday() }}
+            </div>
+            <br>
+            <!-- comments  -->
+            <div class="form-group py-2">
+                {{ form.comments(placeholder="Enter your comments",class="form-control")}}
+            </div>
+            <br>
+            <div class="form-group">
+                {{form.submit(class="btn-sm btn-secondary form-control")}}
+            </div>
+
+
+
+        </div>
+
+    </form>
+
+
+</div>
+
+
+
+{% endblock %}
