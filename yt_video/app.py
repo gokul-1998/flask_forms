@@ -4,15 +4,22 @@ from flask import (Flask, flash, redirect, render_template, request,
 
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import DateField, StringField, PasswordField, BooleanField,RadioField,DateTimeField,SelectField, SubmitField,TextAreaField
+from dotenv import load_dotenv
+load_dotenv()
 
+import os
 from wtforms.validators import InputRequired, Email, Length,DataRequired
 
 app=Flask(__name__)
 app.config['SECRET_KEY'] = 'thisisasecretkey'
+app.config['RECAPTCHA_PUBLIC_KEY']=os.getenv("RECAPTCHA_PUBLIC_KEY")
+app.config['RECAPTCHA_PRIVATE_KEY']=os.getenv("RECAPTCHA_PRIVATE_KEY")
+
 
 # we need to use secret key whenever you use wtf forms
 
 class Widget(FlaskForm):
+    recaptcha=RecaptchaField()
     FirstName=StringField(label="First Name",validators=[DataRequired()])
     LastName=StringField(label="Last Name")
     rating=SelectField(label="How would you rate yourself on a scale of 5 in Python",choices=[

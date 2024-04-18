@@ -50,8 +50,11 @@
                 {{ form.comments(placeholder="Enter your comments",class="form-control")}}
             </div>
             <br>
+
+            {{ form.recaptcha()}}
+            <!-- button firls -->
             <div class="form-group">
-                {{form.submit(class="btn-sm btn-secondary form-control")}}
+                {{ form.submit(class="btn btn-primary form-control")}}
             </div>
 
 
